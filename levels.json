@@ -1,0 +1,35 @@
+[
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 400, "y": 100, "size": 7 }
+        ],
+        "lasers": [
+            {"x": 100, "y": 100, "size": 1, "orientation": "horizontal", "state": "dynamic"}
+        ],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 150, "y": 150, "size": 5 },
+            { "x": 200, "y": 200, "size": 3, "orientation": "vertical", "state": "hostile"}
+        ],
+        "lasers": [
+            {"x": 100, "y": 100, "size": 1, "orientation": "horizontal", "state": "static"}
+        ],
+        "points": 4
+    }
+]
