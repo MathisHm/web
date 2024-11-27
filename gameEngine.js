@@ -1,10 +1,16 @@
 let levels = [];
 let players;
-let currentLevelIndex = 0;
+let currentLevelIndex = 11;
 let currentLevel;
 let isGameOver = false;
 
+let sounds = {
+    backgroundMusic: new Audio('sounds/backgroundMusic.mp3'),
+};
+
 window.onload = init;
+
+let countdown = 5;
 
 async function init() {
     await loadLevels();
@@ -15,16 +21,42 @@ async function init() {
 
     players = [];
     players.push(new Player('Green', 10, 10, 50, 50, 'green')); // Controls: WASD
-    players.push(new Player('Blue', 10, 70, 50, 50, 'blue')); // Controls: Arrow keys
+    //players.push(new Player('Blue', 10, 70, 50, 50, 'blue')); // Controls: Arrow keys
     //players.push(new Player('Yellow', 10, 130, 50, 50, 'yellow')); // Controls: IJKL
     //players.push(new Player('Red', 10, 190, 50, 50, 'red')); // Controls: FCVB
+
+    //await runCountdown();
 
     loadLevel(currentLevelIndex);
 
     document.addEventListener("keydown", controlDown, false);
     document.addEventListener("keyup", controlUp, false);
     document.addEventListener("keydown", controlGameOver, false);
+
+    sounds.backgroundMusic.loop = true;
+    sounds.backgroundMusic.play();
+
     requestAnimationFrame(mainloop);
+}
+
+async function runCountdown() {
+    return new Promise(resolve => {
+        let interval = setInterval(() => {
+            ctx.clearRect(0, 0, w, h);
+            ctx.font = '72px Arial';
+            ctx.fillStyle = 'black';
+            ctx.textAlign = 'center';
+            ctx.fillText(`${countdown}`, w / 2, h / 2);
+
+            countdown -= 1;
+
+            if (countdown < 0) {
+                clearInterval(interval);
+                ctx.clearRect(0, 0, w, h);
+                resolve();
+            }
+        }, 1000);
+    });
 }
 
 function mainloop() {
@@ -66,10 +98,11 @@ async function loadLevels() {
                 return new Wall(wall.x, wall.y, size, orientation, state);
             });
             level.lasers = level.lasers.map(laser => {
-                const size = laser.size || 1;
-                const orientation = laser.orientation || 'horizontal';
-                const state = laser.state || 'static';
-                return new Laser(laser.x, laser.y, size, orientation, state)
+                const width = laser.width || 150;
+                return new Laser(laser.x, laser.y, width);
+            });
+            level.bonuses = level.bonuses.map(bonus => {
+                return new Bonus(bonus.x, bonus.y, bonus.number)
             });
         });
     } catch (error) {
@@ -88,6 +121,7 @@ function loadLevel(levelIndex) {
 
 function displayGameOver() {
     ctx.clearRect(0, 0, w, h);
+
     ctx.font = '48px Arial';
     ctx.fillStyle = 'red';
     ctx.textAlign = 'center';
@@ -98,7 +132,12 @@ function displayGameOver() {
     players.forEach((player, index) => {
         ctx.fillText(`${player.name}: ${player.points} points`, w / 2, h / 2 + index * 30);
     });
+
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'blue';
+    ctx.fillText('Press R to restart', w / 2, h / 2 + players.length * 30 + 40);
 }
+
 
 function controlDown(evt) {
     switch (evt.code) {

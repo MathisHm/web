@@ -8,6 +8,10 @@ class Exit {
         this.imgHeight = 100;
         this.isImageLoaded = false;
         this.image.onload = () => this.isImageLoaded = true;
+
+        this.sounds = {
+            exit: new Audio('sounds/exitCollision.mp3'),
+        };
     }
 
     draw(ctx) {
@@ -17,12 +21,17 @@ class Exit {
     }
 
     checkCollision(player) {
-        return (
-            player.x < this.x + this.imgWidth &&
+        if (player.x < this.x + this.imgWidth &&
             player.x + player.width > this.x &&
             player.y < this.y + this.imgHeight &&
-            player.y + player.height > this.y
-        );
+            player.y + player.height > this.y &&
+            !player.finished) {
+            this.sounds.exit.play();
+            return true;
+        }
+        else {
+            return false;
+        }
     }
-    
+
 }

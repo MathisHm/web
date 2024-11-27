@@ -4,6 +4,7 @@ class Level {
         this.walls = levelData.walls;
         this.lasers = levelData.lasers;
         this.exit = new Exit(levelData.exit.x, levelData.exit.y);
+        this.bonuses = levelData.bonuses;
         this.points = levelData.points;
         this.playersFinishedOrder = [];
     }
@@ -13,6 +14,7 @@ class Level {
             player.x = this.startPosition[index].x;
             player.y = this.startPosition[index].y;
             player.finished = false;
+            player.dead = false;
             player.speedX = 0;
             player.speedY = 0;
         });
@@ -23,11 +25,12 @@ class Level {
         this.exit.draw(ctx);
         this.walls.forEach(wall => wall.draw(ctx));
         this.lasers.forEach(laser => laser.draw(ctx));
+        this.bonuses.forEach(bonus => bonus.draw(ctx));
     }
 
     checkCollisions(players) {
         players.forEach(player => {
-            if (this.exit.checkCollision(player) && !player.finished) {
+            if (this.exit.checkCollision(player) && !player.finished && !player.dead) {
                 player.finished = true;
                 this.playersFinishedOrder.push(player);
             }
@@ -35,6 +38,12 @@ class Level {
                 if (wall.checkCollision(player)) {
                     player.speedX = 0;
                     player.speedY = 0;
+                    this.sounds.wallCollision.play();
+                }
+            });
+            this.bonuses.forEach(bonus => {
+                if (bonus.checkCollision(player)) {
+                    player.addPoints(bonus.number);
                 }
             });
             this.lasers.forEach(laser => laser.checkCollision(player));
@@ -42,7 +51,8 @@ class Level {
     }
 
     manageLevel(players, loadNextLevel) {
-        if (this.playersFinishedOrder.length === players.length) {
+        const activePlayers = players.filter(player => !player.dead);
+        if (this.playersFinishedOrder.length === activePlayers.length) {
             if (this.playersFinishedOrder[0]) this.playersFinishedOrder[0].points += 4;
             if (this.playersFinishedOrder[1]) this.playersFinishedOrder[1].points += 3;
             if (this.playersFinishedOrder[2]) this.playersFinishedOrder[2].points += 2;

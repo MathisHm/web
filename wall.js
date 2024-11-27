@@ -11,6 +11,11 @@ class Wall {
         this.state = state;
         this.isImageLoaded = false;
         this.image.onload = () => this.isImageLoaded = true;
+
+        this.sounds = {
+            wallCollision: new Audio('sounds/wallCollision.wav'),
+            hostileWallCollision: new Audio('sounds/hostileWallCollision.mp3'),
+        };
     }
 
     draw(ctx) {
@@ -56,7 +61,8 @@ class Wall {
             player.x < this.x + obstacleWidth &&
             player.x + player.width > this.x &&
             player.y < this.y + obstacleHeight &&
-            player.y + player.height > this.y
+            player.y + player.height > this.y &&
+            !player.dead
         ) {
             const overlapLeft = (player.x + player.width) - this.x;
             const overlapRight = (this.x + obstacleWidth) - player.x;
@@ -66,21 +72,24 @@ class Wall {
             const minOverlap = Math.min(overlapLeft, overlapRight, overlapTop, overlapBottom);
             
             if (this.state === 'hostile') {
+                this.sounds.hostileWallCollision.play();
                 player.dead = true;
             }
-
-            if (minOverlap === overlapLeft) {
-                player.x = this.x - player.width;
-                player.speedX = -player.speedX;
-            } else if (minOverlap === overlapRight) {
-                player.x = this.x + obstacleWidth;
-                player.speedX = -player.speedX;
-            } else if (minOverlap === overlapTop) {
-                player.y = this.y - player.height;
-                player.speedY = -player.speedY;
-            } else if (minOverlap === overlapBottom) {
-                player.y = this.y + obstacleHeight;
-                player.speedY = -player.speedY;
+            else {
+                this.sounds.wallCollision.play();
+                if (minOverlap === overlapLeft) {
+                    player.x = this.x - player.width;
+                    player.speedX = -player.speedX;
+                } else if (minOverlap === overlapRight) {
+                    player.x = this.x + obstacleWidth;
+                    player.speedX = -player.speedX;
+                } else if (minOverlap === overlapTop) {
+                    player.y = this.y - player.height;
+                    player.speedY = -player.speedY;
+                } else if (minOverlap === overlapBottom) {
+                    player.y = this.y + obstacleHeight;
+                    player.speedY = -player.speedY;
+                }
             }
         }
     }

@@ -7,11 +7,62 @@
             { "x": 190, "y": 10 }
         ],
         "exit": { "x": 680, "y": 480 },
-        "walls": [
-            { "x": 400, "y": 100, "size": 7 }
+        "walls": [],
+        "lasers": [],
+        "bonuses": [{ "x": 100, "y": 500, "number": 2 }],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
         ],
-        "lasers": [
-            {"x": 100, "y": 100, "size": 1, "orientation": "horizontal", "state": "dynamic"}
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 100, "y": 200, "size": 10, "orientation": "horizontal" },
+            { "x": 500, "y": 200, "size": 7, "orientation": "vertical" }
+        ],
+        "lasers": [],
+        "bonuses": [{ "x": 400, "y": 300, "number": 1 }],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 400, "y": 300, "size": 5, "orientation": "vertical" },
+            { "x": 100, "y": 100, "size": 12, "orientation": "horizontal" },
+            { "x": 500, "y": 150, "size": 7, "orientation": "vertical" }
+        ],
+        "lasers": [],
+        "bonuses": [{ "x": 475, "y": 400, "number": 3 }],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 100, "y": 200, "size": 8, "orientation": "vertical" },
+            { "x": 100, "y": 350, "size": 8, "orientation": "horizontal" },
+            { "x": 100, "y": 100, "size": 12, "orientation": "horizontal" },
+            { "x": 500, "y": 250, "size": 8, "orientation": "horizontal" }
+        ],
+        "lasers": [],
+        "bonuses": [
+            { "x": 125, "y": 185, "number": 2 },
+            { "x": 50, "y": 585, "number": 2 }
         ],
         "points": 4
     },
@@ -24,11 +75,169 @@
         ],
         "exit": { "x": 680, "y": 480 },
         "walls": [
-            { "x": 150, "y": 150, "size": 5 },
-            { "x": 200, "y": 200, "size": 3, "orientation": "vertical", "state": "hostile"}
+            { "x": 350, "y": 150, "size": 7, "orientation": "horizontal" },
+            { "x": 500, "y": 250, "size": 6, "orientation": "vertical" },
+            { "x": 0, "y": 350, "size": 9, "orientation": "horizontal" },
+            { "x": 600, "y": 50, "size": 3, "orientation": "vertical" }
+        ],
+        "lasers": [],
+        "bonuses": [
+            { "x": 525, "y": 235, "number": 1 },
+            { "x": 525, "y": 585, "number": 3 }
+        ],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 50, "y": 200, "size": 11, "orientation": "horizontal", "state": "hostile" },
+            { "x": 400, "y": 100, "size": 9, "orientation": "vertical" },
+            { "x": 500, "y": 100, "size": 5, "orientation": "horizontal", "state": "hostile" },
+            { "x": 200, "y": 250, "size": 6, "orientation": "vertical" }
+        ],
+        "lasers": [],
+        "bonuses": [
+            { "x": 475, "y": 185, "number": 5 },
+            { "x": 25, "y": 235, "number": 1 }
+        ],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 300, "y": 300, "size": 5, "orientation": "horizontal", "state": "hostile" },
+            { "x": 400, "y": 150, "size": 5, "orientation": "horizontal" },
+            { "x": 500, "y": 200, "size": 4, "orientation": "vertical", "state": "hostile" },
+            { "x": 250, "y": 400, "size": 6, "orientation": "vertical" },
+            { "x": 0, "y": 100, "size": 8, "orientation": "horizontal", "state": "hostile" }
+        ],
+        "lasers": [],
+        "bonuses": [
+            { "x": 25, "y": 185, "number": 1 },
+            { "x": 25, "y": 235, "number": 1 },
+            { "x": 75, "y": 185, "number": 1 },
+            { "x": 75, "y": 235, "number": 1 }
+        ],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 300, "y": 100, "size": 6, "orientation": "vertical", "state": "hostile" },
+            { "x": 450, "y": 200, "size": 4, "orientation": "horizontal" },
+            { "x": 150, "y": 350, "size": 5, "orientation": "vertical", "state": "hostile" },
+            { "x": 550, "y": 400, "size": 3, "orientation": "horizontal" },
+            { "x": 200, "y": 250, "size": 7, "orientation": "horizontal", "state": "hostile" },
+            { "x": 600, "y": 50, "size": 3, "orientation": "vertical" }
+        ],
+        "lasers": [],
+        "bonuses": [
+            { "x": 225, "y": 335, "number": 1 }
+        ],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 200, "y": 150, "size": 5, "orientation": "horizontal", "state": "hostile" },
+            { "x": 300, "y": 350, "size": 4, "orientation": "horizontal" },
+            { "x": 400, "y": 100, "size": 6, "orientation": "vertical", "state": "hostile" },
+            { "x": 250, "y": 200, "size": 3, "orientation": "vertical" },
+            { "x": 550, "y": 300, "size": 3, "orientation": "horizontal", "state": "hostile" },
+            { "x": 600, "y": 50, "size": 5, "orientation": "vertical" },
+            { "x": 100, "y": 400, "size": 4, "orientation": "horizontal" }
+        ],
+        "lasers": [],
+        "bonuses": [
+            { "x": 325, "y": 235, "number": 9 },
+            { "x": 525, "y": 235, "number": 1 }
+        ],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 0, "y": 100, "size": 13, "orientation": "horizontal", "state": "hostile" },
+            { "x": 100, "y": 250, "size": 14, "orientation": "horizontal", "state": "hostile" },
+            { "x": 0, "y": 400, "size": 13, "orientation": "horizontal", "state": "hostile" }
+        ],
+        "lasers": [],
+        "bonuses": [
+            { "x": 225, "y": 215, "number": 2 },
+            { "x": 225, "y": 350, "number": 2 }
+        ],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+            { "x": 0, "y": 100, "size": 13, "orientation": "horizontal", "state": "hostile" },
+            { "x": 100, "y": 250, "size": 14, "orientation": "horizontal", "state": "hostile" },
+            { "x": 0, "y": 400, "size": 13, "orientation": "horizontal", "state": "hostile" }
         ],
         "lasers": [
-            {"x": 100, "y": 100, "size": 1, "orientation": "horizontal", "state": "static"}
+            { "x": 500, "y": 150, "width": 150},
+            { "x": 0, "y": 300, "width": 150}
+        ],
+        "bonuses": [
+            { "x": 225, "y": 215, "number": 2 },
+            { "x": 225, "y": 350, "number": 2 }
+        ],
+        "points": 4
+    },
+    {
+        "startPosition": [
+            { "x": 10, "y": 10 },
+            { "x": 70, "y": 10 },
+            { "x": 130, "y": 10 },
+            { "x": 190, "y": 10 }
+        ],
+        "exit": { "x": 680, "y": 480 },
+        "walls": [
+        ],
+        "lasers": [
+            { "x": 500, "y": 150, "width": 150},
+            { "x": 0, "y": 300, "width": 150},
+            { "x": 300, "y": 150, "width": 150},
+            { "x": 250, "y": 300, "width": 150}
+        ],
+        "bonuses": [
         ],
         "points": 4
     }
