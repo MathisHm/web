@@ -1,6 +1,6 @@
 let levels = [];
 let players;
-let currentLevelIndex = 11;
+let currentLevelIndex = 0;
 let currentLevel;
 let isGameOver = false;
 
@@ -10,7 +10,7 @@ let sounds = {
 
 window.onload = init;
 
-let countdown = 5;
+let countdown = 4;
 
 async function init() {
     await loadLevels();
@@ -19,14 +19,11 @@ async function init() {
     h = canvas.height;
     ctx = canvas.getContext('2d');
 
+    const playerCount = getPlayerCount();
     players = [];
-    players.push(new Player('Green', 10, 10, 50, 50, 'green')); // Controls: WASD
-    //players.push(new Player('Blue', 10, 70, 50, 50, 'blue')); // Controls: Arrow keys
-    //players.push(new Player('Yellow', 10, 130, 50, 50, 'yellow')); // Controls: IJKL
-    //players.push(new Player('Red', 10, 190, 50, 50, 'red')); // Controls: FCVB
+    addPlayers(playerCount);
 
-    //await runCountdown();
-
+await runCountdown();
     loadLevel(currentLevelIndex);
 
     document.addEventListener("keydown", controlDown, false);
@@ -38,6 +35,38 @@ async function init() {
 
     requestAnimationFrame(mainloop);
 }
+
+function getPlayerCount() {
+    let count;
+    do {
+        count = parseInt(prompt("Enter the number of players (1 to 4):"), 10);
+    } while (isNaN(count) || count < 1 || count > 4);
+    return count;
+}
+
+function addPlayers(count) {
+    const playerData = [
+        { name: 'Green', x: 10, y: 10, color: 'green', controls: 'WASD' },
+        { name: 'Blue', x: 10, y: 70, color: 'blue', controls: 'Arrow keys' },
+        { name: 'Yellow', x: 10, y: 130, color: 'yellow', controls: 'IJKL' },
+        { name: 'Red', x: 10, y: 190, color: 'red', controls: 'FCVB' }
+    ];
+
+    const controlsInfo = document.getElementById("controlsInfo");
+    controlsInfo.innerHTML = '';
+
+    for (let i = 0; i < count; i++) {
+        const data = playerData[i];
+        players.push(new Player(data.name, data.x, data.y, 50, 50, data.color));
+
+        const controlText = document.createElement('p');
+        controlText.style.color = data.color;
+        controlText.textContent = `${data.name} Player Controls: ${data.controls}`;
+        controlsInfo.appendChild(controlText);
+    }
+}
+
+
 
 async function runCountdown() {
     return new Promise(resolve => {

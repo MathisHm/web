@@ -9,10 +9,12 @@ class Bonus {
 
     draw(ctx) {
         if (!this.collected) {
+            ctx.save();
             ctx.font = '30px Arial';
             ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
             ctx.fillText(`+${this.number}`, this.x, this.y);
+            ctx.restore();
         }
     }
 

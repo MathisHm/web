@@ -22,10 +22,12 @@ class Level {
     }
 
     draw(ctx) {
+        ctx.save();
         this.exit.draw(ctx);
         this.walls.forEach(wall => wall.draw(ctx));
         this.lasers.forEach(laser => laser.draw(ctx));
         this.bonuses.forEach(bonus => bonus.draw(ctx));
+        ctx.restore();
     }
 
     checkCollisions(players) {

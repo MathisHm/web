@@ -16,7 +16,9 @@ class Exit {
 
     draw(ctx) {
         if (this.isImageLoaded) {
+            ctx.save();
             ctx.drawImage(this.image, this.x, this.y, this.imgWidth, this.imgHeight);
+            ctx.restore();
         }
     }
 

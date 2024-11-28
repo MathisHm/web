@@ -20,6 +20,7 @@ class Wall {
 
     draw(ctx) {
         if (this.isImageLoaded) {
+            ctx.save();
             if (this.orientation === 'horizontal') {
                 for (let i = 0; i < this.size; i++) {
                     ctx.drawImage(
@@ -49,7 +50,7 @@ class Wall {
                     }
                 }
             }
-
+            ctx.restore();
         }
     }
 

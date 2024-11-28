@@ -10,7 +10,7 @@ class Laser {
         this.imgWidth = 150;
         this.imgHeight = 20;
         this.moveLength = 1;
-        this.direction = 1;
+        this.direction = 2;
         this.isImageLoaded = false;
         this.image.onload = () => this.isImageLoaded = true;
 
@@ -21,12 +21,14 @@ class Laser {
 
     draw(ctx) {
         if (this.isImageLoaded) {
+            ctx.save()
             const maxMoveDistance = this.moveLength * this.imgWidth;
             this.x += this.direction;
             if (this.x >= this.initialX + maxMoveDistance || this.x <= this.initialX) {
                 this.direction *= -1;
             }
             ctx.drawImage(this.image, this.x, this.y, this.width, this.imgHeight);
+            ctx.restore();
         }
     }
 
